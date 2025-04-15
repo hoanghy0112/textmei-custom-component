@@ -7,6 +7,7 @@ type PropTypes = {
   height: number
   setPng: (d: string) => unknown
   onCancel: () => unknown
+  onZoom: () => unknown
 }
 
 export default function PdfToPngComponent({
@@ -14,7 +15,8 @@ export default function PdfToPngComponent({
   width,
   height,
   setPng,
-  onCancel
+  onCancel,
+  onZoom
 }: PropTypes) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [pngDataUrl, setPngDataUrl] = useState<string | null>()
@@ -62,7 +64,7 @@ export default function PdfToPngComponent({
   }, [pngDataUrl])
 
   return (
-    <div style={{ position: 'relative', width: 'fit-content' }}>
+    <div className="relative w-fit rounded-[12px]">
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {pngDataUrl ? (
         <>
@@ -72,6 +74,22 @@ export default function PdfToPngComponent({
             className=" object-contain w-fit content-start mt-[8px]"
             alt="Converted from PDF"
           />
+          <div
+            onClick={onZoom}
+            className="absolute top-[0px] left-[0px] w-full h-full bg-[#dddc] opacity-0 hover:opacity-100 backdrop-blur-none duration-200 cursor-pointer grid place-items-center"
+          >
+            <div className=" w-[30px] h-[30px]">
+              <svg
+                stroke="currentColor"
+                fill="#000"
+                strokeWidth="0"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M396.795 396.8H320V448h128V320h-51.205zM396.8 115.205V192H448V64H320v51.205zM115.205 115.2H192V64H64v128h51.205zM115.2 396.795V320H64v128h128v-51.205z"></path>
+              </svg>
+            </div>
+          </div>
           <div
             className=" absolute p-2 w-[20px] h-[20px] top-[0px] -right-[10px] rounded-full bg-[#eee] hover:bg-[#ccc] cursor-pointer duration-200"
             onClick={onCancel}

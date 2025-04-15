@@ -23,6 +23,7 @@ export function PdfToPng() {
   })
 
   const onCancel = Retool.useEventCallback({ name: 'onCancel' })
+  const onZoom = Retool.useEventCallback({ name: 'onZoom' })
 
   return (
     <PdfToPngComponent
@@ -31,6 +32,7 @@ export function PdfToPng() {
       height={height}
       setPng={setPng}
       onCancel={onCancel}
+      onZoom={onZoom}
     />
   )
 }
