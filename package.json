@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.4",
     "@tryretool/custom-component-support": "latest",
     "pdfjs-dist": "^5.1.91",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^4.1.4"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -14,7 +16,8 @@
   "scripts": {
     "dev": "npx retool-ccl dev",
     "deploy": "npx retool-ccl deploy",
-    "login": "npx retool-ccl login"
+    "login": "npx retool-ccl login",
+    "tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
   },
   "browserslist": {
     "production": [

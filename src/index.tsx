@@ -4,6 +4,8 @@ import { type FC } from 'react'
 import { Retool } from '@tryretool/custom-component-support'
 import PdfToPngComponent from './components/PdfToPng'
 
+import './output.css'
+
 export function PdfToPng() {
   const [pdf, setPdf] = Retool.useStateString({
     name: 'Pdf base64'
@@ -20,12 +22,15 @@ export function PdfToPng() {
     inspector: 'hidden'
   })
 
+  const onCancel = Retool.useEventCallback({ name: 'onCancel' })
+
   return (
     <PdfToPngComponent
       pdf={pdf}
       width={width}
       height={height}
       setPng={setPng}
+      onCancel={onCancel}
     />
   )
 }
