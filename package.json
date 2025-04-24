@@ -41,8 +41,8 @@
     "prettier": "^3.0.3"
   },
   "retoolCustomComponentLibraryConfig": {
-    "name": "TextmeiCustomComponent",
-    "label": "Textmei custom component",
+    "name": "TextmeiLibrary",
+    "label": "Textmei library",
     "description": "",
     "entryPoint": "src/index.tsx",
     "outputPath": "dist"

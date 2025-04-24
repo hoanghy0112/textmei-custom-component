@@ -43,6 +43,8 @@ export default function PdfToPngComponent({
       canvas.width = viewport.width
       canvas.height = viewport.height
 
+      if (!context) return
+
       const renderContext = {
         canvasContext: context,
         viewport: viewport
@@ -64,19 +66,19 @@ export default function PdfToPngComponent({
   }, [pngDataUrl])
 
   return (
-    <div className="relative w-fit rounded-[12px]">
+    <div className="relative w-fit mt-[8px] ">
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {pngDataUrl ? (
         <>
           <img
             src={pngDataUrl}
-            height={height}
-            className=" object-contain w-fit content-start mt-[8px]"
+            style={{ width, height }}
+            className=" object-cover content-start rounded-[12px]"
             alt="Converted from PDF"
           />
           <div
             onClick={onZoom}
-            className="absolute top-[0px] left-[0px] w-full h-full bg-[#dddc] opacity-0 hover:opacity-100 backdrop-blur-none duration-200 cursor-pointer grid place-items-center"
+            className="absolute top-[0px] left-[0px] rounded-[12px] overflow-hidden w-full h-full bg-[#dddc] opacity-0 hover:opacity-100 backdrop-blur-none duration-200 cursor-pointer grid place-items-center"
           >
             <div className=" w-[30px] h-[30px]">
               <svg
@@ -91,7 +93,7 @@ export default function PdfToPngComponent({
             </div>
           </div>
           <div
-            className=" absolute p-2 w-[20px] h-[20px] top-[0px] -right-[10px] rounded-full bg-[#eee] hover:bg-[#ccc] cursor-pointer duration-200"
+            className=" absolute p-2 w-[20px] h-[20px] -top-[10px] -right-[10px] rounded-full bg-[#eee] hover:bg-[#ccc] cursor-pointer duration-200"
             onClick={onCancel}
           >
             <svg
